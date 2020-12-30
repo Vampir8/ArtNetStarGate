@@ -1,0 +1,40 @@
+Art-net Stargate v1.0 beta
+
+
+Importuj fixturę Ra StarGate do swojego programu i dodaj do swojego schow pod adresem 8.508
+(jeśli twoj program ma mniej lub więcej universe - najlepiej wrzuć na ostatni universe)
+
+Program defaultowo wyszukuje Ra na koncu 8 universe - pod adresem 8.508
+
+Jeśli umieścisz Ra na innym universe - trzeba to podać na końcu lini komend.
+
+ArtNetStargate.exe "nazwa onka twojego programu" "node ip address" "bind" "opoźnienie między ramkami" "ilośc wysyłanych universe" "nr universe gdzie jest Ra"
+
+opcja bind - program wysyła dane z portu artnet (niektóre bramki tego wymagają). Możesz wpisać nobind jeśli nie chcesz użyć tej opcji.
+
+
+Jeśli Ra będzie na universe 2 (2.508)
+Uruchamiasz
+ArtNetStargate.exe "nazwa" 127.0.0.1 nobind 30 2 2
+
+
+
+
+
+Defautowo program ma podane wartośći:
+Nazwa okna programu "XX"
+NodeIP 127.0.0.1
+Ilośc universe do wysłania 2
+Ra universe 8
+
+
+Możesz stworzyć własną Fixturę do dowolnego programu. Jest szansa, że tez będzie działać.
+
+Fixtura powinna mieć 5 kanałów - najlepiej o żadko używanych funkcjach - oraz o podanych defaultowych wartośćiach dmx.
+
+1 84
+2 104
+3 105
+4 101
+5 102
+

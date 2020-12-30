@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1608739371 source:c:\cpp\artnetstargate\main.cpp
+	<Windows.h>
+	<iostream>
+	<thread>
+	<WinSock2.h>
+	<Ws2tcpip.h>
+	<string>
+	<vector>
+	<cstdlib>
+	<WinSock2.h>
+	<Ws2tcpip.h>
+
+1609166072 source:c:\cpp\artnetstargate\icon.rc
+
