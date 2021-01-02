@@ -25,3 +25,9 @@ ArtNetStargate.exe "program window name" "node ip" "bind / or nobind" "fps" "uni
 
 ex. ArtNetStargate.exe "myprogram" 2.0.0.10 bind 30 4 8
 
+
+
+
+this is test with chamsys
+https://www.youtube.com/watch?v=WGwr3fhAVYM
+
