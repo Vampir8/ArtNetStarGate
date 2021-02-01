@@ -1,4 +1,4 @@
-/*BETA1.0_____          __                        __
+/*BETA1.1_____          __                        __
         /  _  \________/  |_         ____   _____/  |_
        /  /_\  \_  __ \   __\  ___  /    \_/ __ \   __\
       /    |    \  | \/|  |   /__/ |   |  \  ___/|  |
@@ -27,7 +27,7 @@ DWORD* adr;
 char* progname ="XX";       //default program name
 char* nodeip = "127.0.0.1"; //default node ip addres
 //bind
-int fps = 30;               //ms delay between arddmx frames
+int fps = 32;               //ms delay between arddmx frames
 int universes = 2;          //nr of universes to send
 int rauniverse = 8;         //nr of universe where Ra is (end of last universe is a best - defalult is 8 (8.508)
 
@@ -134,6 +134,7 @@ if (argc >= 5){
 }
 if (argc >= 6){
     universes = atof(argv[5]);
+    fps = fps/universes;
 }
 if (argc >= 7){
     rauniverse = atof(argv[6]);
@@ -142,7 +143,7 @@ if (argc >= 7){
 
     system("CLS");
     std::cout << R"(
-BETA 1.0 _____          __                        __
+BETA 1.1 _____          __                        __
         /  _  \________/  |_         ____   _____/  |_
        /  /_\  \_  __ \   __\  ___  /    \_/ __ \   __\
       /    |    \  | \/|  |   /__/ |   |  \  ___/|  |
@@ -370,9 +371,9 @@ BETA 1.0 _____          __                        __
 
     for (int uni = 0; uni < universes; uni++){
            std::cout << "" << std::endl;
-           write(".*| Universe ");
-           std::cout << uni+1;
-           write(" |*.");
+           std::cout << ".*| Universe ";
+           std::cout << uni;
+           std::cout << " |*.";
 
 
     }
@@ -413,13 +414,13 @@ BETA 1.0 _____          __                        __
         WSACleanup();
         return 1;
         }
-
+    Sleep(fps);
     }
 
     if (Sequence == 255){
             Sequence = 0;
     }
-    Sleep(fps);
+    //Sleep(fps);
     //adrminus = 4091;
     }
 
