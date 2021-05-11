@@ -20,12 +20,11 @@ Ra universe "8"
 
 how to run
 
-ArtNetStargate.exe "program window name" "node ip" "bind / or nobind" "fps" "universes" "Ra"
 
 
 ex. ArtNetStargate.exe "myprogram" 2.0.0.10 bind 30 4 8
-
-
+if bind error
+ArtNetStargate.exe "myprogram" 2.0.0.10 nobind 30 4 8
 
 
 this is test with chamsys
