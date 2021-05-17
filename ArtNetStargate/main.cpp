@@ -1,4 +1,4 @@
-/*BETA1.2_____          __                        __
+/*       _____          __                        __
         /  _  \________/  |_         ____   _____/  |_
        /  /_\  \_  __ \   __\  ___  /    \_/ __ \   __\
       /    |    \  | \/|  |   /__/ |   |  \  ___/|  |
@@ -22,6 +22,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <chrono>
 
 using namespace std;
 DWORD* adr;
@@ -29,7 +30,7 @@ char* progname ="MagicQ PC (Demo Mode)";       //default program name
 char* nodeip = "127.0.0.1"; //default node ip addres
 //bind
 int Sequence = 0;
-int fps = 28;               //ms delay between arddmx frames
+int fps = 32;               //ms delay between arddmx frames
 int universes = 2;          //nr of universes to send
 int rauniverse = 8;         //nr of universe where Ra is (end of last universe is a best - defalult is 8 (8.508)
 
@@ -146,7 +147,7 @@ if (argc >= 7){
 
     system("CLS");
     std::cout << R"(
-BETA 1.2 _____          __                        __
+BETA 1.3 _____          __                        __
         /  _  \________/  |_         ____   _____/  |_
        /  /_\  \_  __ \   __\  ___  /    \_/ __ \   __\
       /    |    \  | \/|  |   /__/ |   |  \  ___/|  |
@@ -279,7 +280,7 @@ BETA 1.2 _____          __                        __
     ArtPoolReply[58] = byte(' ');  //
     ArtPoolReply[59] = byte('1');  // 1
     ArtPoolReply[60] = byte('.');  // .
-    ArtPoolReply[61] = byte('2');  // 2
+    ArtPoolReply[61] = byte('3');  // 3
     for (int i = 62; i <= 107; i++) { //Long Name
       ArtPoolReply[i] = 0x00;
     }
@@ -381,9 +382,10 @@ BETA 1.2 _____          __                        __
 
     }
 
-
+    fps = fps/universes;
     while (FindWindow(NULL, progname)){   //get universe data and send ArtDMX
-        if (Sequence == 0 && nodeip == "127.0.0.1"){
+        //if (Sequence == 0 ){
+                if (Sequence == 0 && nodeip == "127.0.0.1"){
             iResult = sendto(SendSocket, ArtPoolReply, BufLen, 0, (SOCKADDR *) & RecvAddr, sizeof (RecvAddr));
             if (iResult == SOCKET_ERROR) {
                 wprintf(L"sendto failed with error: %d\n", WSAGetLastError());
@@ -395,10 +397,11 @@ BETA 1.2 _____          __                        __
         ArtDmx[12] = Sequence * 0x01;
 
         int adrminus = rauniverse * 512 - 5;
-        Sleep(fps);
 
         for (int u = 0; u < universes; u++){
-        //Sleep(fps/universes);
+
+        Sleep(fps);
+
         ReadProcessMemory(process, (LPVOID)adr-adrminus, value, 512, NULL);   // universe 0
             ArtDmx[14] = u - 0x00;
         for (int i = 0; i < 512; i++) {
@@ -421,7 +424,6 @@ BETA 1.2 _____          __                        __
             Sequence = 0;
     }
     //Sleep(fps);
-    //adrminus = 4091;
     }
 
 

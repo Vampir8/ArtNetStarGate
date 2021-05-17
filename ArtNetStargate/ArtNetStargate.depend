@@ -1,13 +1,14 @@
 # depslib dependency file v1.0
-1608739371 source:c:\cpp\artnetstargate\main.cpp
+1621262670 source:c:\cpp\artnetstargate\main.cpp
+	<WinSock2.h>
 	<Windows.h>
 	<iostream>
 	<thread>
-	<WinSock2.h>
 	<Ws2tcpip.h>
 	<string>
 	<vector>
 	<cstdlib>
+	<chrono>
 	<WinSock2.h>
 	<Ws2tcpip.h>
 
