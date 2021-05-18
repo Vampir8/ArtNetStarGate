@@ -20,7 +20,7 @@ char* nodeip = "127.0.0.1"; //default node ip addres
 //bind
 int Sequence = 0;
 int fps = 32;               //ms delay between arddmx frames
-int universes = 4;          //nr of universes to send
+int universes = 2;          //nr of universes to send
 int rauniverse = 8;         //nr of universe where Ra is (end of last universe is a best - defalult is 8 (8.508)
 
 
