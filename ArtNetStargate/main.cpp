@@ -1,15 +1,4 @@
-/*       _____          __                        __
-        /  _  \________/  |_         ____   _____/  |_
-       /  /_\  \_  __ \   __\  ___  /    \_/ __ \   __\
-      /    |    \  | \/|  |   /__/ |   |  \  ___/|  |
-      \____|__  /__|   |__|        |___|  /\___  >__|
-  _________ __\/                ________\/     \/_
- /   _____//  |______ _______  /  _____/_____ _/  |_  ____
- \_____  \\   __\__  \\_  __ \/   \  ___\__  \\   __\/ __ \
- /        \|  |  / __ \|  | \/\    \_\  \/ __ \|  | \  ___/
-/_______  /|__| (____  /__|    \______  (____  /__|  \___  >
-        \/           \/               \/     \/          \/
-
+/*ArtNet StarGate beta 1.3 by ArtGateOne
 */
 
 // "ws2_32"
@@ -31,7 +20,7 @@ char* nodeip = "127.0.0.1"; //default node ip addres
 //bind
 int Sequence = 0;
 int fps = 32;               //ms delay between arddmx frames
-int universes = 2;          //nr of universes to send
+int universes = 4;          //nr of universes to send
 int rauniverse = 8;         //nr of universe where Ra is (end of last universe is a best - defalult is 8 (8.508)
 
 
@@ -305,7 +294,7 @@ BETA 1.3 _____          __                        __
     ArtPoolReply[187] = 0x01; // SwIn 1
     ArtPoolReply[188] = 0x02; // SwIn 2
     ArtPoolReply[189] = 0x03; // SwIn 3
-    ArtPoolReply[190] = 0x00; // SwOut 0//ODBIERA UNIVERSE NR
+    ArtPoolReply[190] = 0x00; // SwOut 0
     ArtPoolReply[191] = 0x01; // SwOut 1
     ArtPoolReply[192] = 0x02; // SwOut 2
     ArtPoolReply[193] = 0x03; // SwOut 3
@@ -382,10 +371,11 @@ BETA 1.3 _____          __                        __
 
     }
 
-    fps = fps/universes;
+    //fps = fps/universes;
     while (FindWindow(NULL, progname)){   //get universe data and send ArtDMX
+            Sleep(fps);
         //if (Sequence == 0 ){
-                if (Sequence == 0 && nodeip == "127.0.0.1"){
+               if (Sequence == 0 && nodeip == "127.0.0.1"){
             iResult = sendto(SendSocket, ArtPoolReply, BufLen, 0, (SOCKADDR *) & RecvAddr, sizeof (RecvAddr));
             if (iResult == SOCKET_ERROR) {
                 wprintf(L"sendto failed with error: %d\n", WSAGetLastError());
@@ -400,7 +390,7 @@ BETA 1.3 _____          __                        __
 
         for (int u = 0; u < universes; u++){
 
-        Sleep(fps);
+        //Sleep(fps);
 
         ReadProcessMemory(process, (LPVOID)adr-adrminus, value, 512, NULL);   // universe 0
             ArtDmx[14] = u - 0x00;
