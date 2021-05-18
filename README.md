@@ -9,12 +9,20 @@ This program send RAM data as Art-Net frames.
 3. run artnetstargate with Your program window name
 
 Default in program
-Program name "XX"
+
+Program name "MagicQ PC (Demo Mode)"
+
 node ip "127.0.0.1"
+
 bind - not set
-fps - delay between frames "30"
+
+fps - delay between frames "32"
+
 nr universes to send "2"
+
 Ra universe "8"
+
+
 
 
 
@@ -22,11 +30,24 @@ how to run
 
 
 
-ex. ArtNetStargate.exe "myprogram" 2.0.0.10 bind 30 4 8
+ex. ArtNetStargate.exe "my program window name"
 
-if bind error
+this send 2 universe to 127.0.0.1
 
-ArtNetStargate.exe "myprogram" 2.0.0.10 nobind 30 4 8
+OR ADD MORE 
+
+ArtNetStargate.exe "my program window name" 2.0.0.10 nobind 30 4 8
+
+where 2.0.0.10 is artnet gate IP
+
+bind or nobind (output port set or no)
+
+30 - delay between frames
+
+4 nr of universes to send
+
+8 - is a universe where RA is patched
+
 
 
 this is test with chamsys
